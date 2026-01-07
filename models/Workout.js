@@ -1,28 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const workoutSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const WorkoutSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },      // ex: "Leg Day"
+    date: { type: String, required: true },       // keep string for beginner simplicity
   },
-  date: {
-    type: Date,
-    default: Date.now
-  },
-  type: {
-    type: String,
-    enum: ['strength', 'yoga', 'pilates', 'tai-chi', 'stretching', 'cardio', 'mixed'],
-    default: 'mixed'
-  },
-  duration: {
-    type: Number,
-    default: 0
-  },
-  notes: String,
-  completed: {
-    type: Boolean,
-    default: false
-  }
-}, { timestamps: true });
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Workout', workoutSchema);
+module.exports = mongoose.model("Workout", WorkoutSchema);
